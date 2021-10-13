@@ -1,36 +1,31 @@
 #See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
-
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
-WORKDIR /app
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
+WORKDIR /app 
+#
 EXPOSE 80
 EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
-WORKDIR /src
-COPY ["VogCodeChallenge.API.csproj", ""]
-RUN dotnet restore "./VogCodeChallenge.csproj"
-COPY . .
-WORKDIR "/src/."
-RUN dotnet build "VogCodeChallenge.API.csproj" -c Release -o /app/build
+# copy csproj and restore as distinct layers
+COPY *.sln .
+COPY ["VogCodeChallenge.API/VogCodeChallenge.API.csproj", "./VogCodeChallenge.API/"]
+COPY ["VogCodeChallenge.Models/VogCodeChallenge.Entities.csproj", "./VogCodeChallenge.Models/"]
+COPY ["VogCodeChallenge.Business/VogCodeChallenge.Business.csproj", "./VogCodeChallenge.Business/"]
 
-FROM build AS publish
-RUN dotnet publish "VogCodeChallenge.API.csproj" -c Release -o /app/publish
+#
+RUN dotnet restore 
+#
+# copy everything else and build app
 
-
-
-FROM base AS final
-WORKDIR /app
-COPY --from=publish /app/publish .
-RUN apt-get update
-
-RUN apt-get install wget libgdiplus -y
-
-RUN wget -P /app https://github.com/rdvojmoc/DinkToPdf/raw/master/v0.12.4/64%20bit/libwkhtmltox.dll
-
-RUN wget -P /app https://github.com/rdvojmoc/DinkToPdf/raw/master/v0.12.4/64%20bit/libwkhtmltox.dylib
-
-RUN wget -P /app https://github.com/rdvojmoc/DinkToPdf/raw/master/v0.12.4/64%20bit/libwkhtmltox.so
-ENV ASPNETCORE_URLS https://+:5002 
-EXPOSE 5002
-ENTRYPOINT ["dotnet", "VogCodeChallenge.API.dll","--environment=Development"]
+COPY ["VogCodeChallenge.API/.", "./VogCodeChallenge.API/"]
+COPY ["VogCodeChallenge.Models/.", "./VogCodeChallenge.Models/"]
+COPY ["VogCodeChallenge.Business/.", "./VogCodeChallenge.Business/"]
+#
+WORKDIR /app/VogCodeChallenge.API
+RUN dotnet publish -c Release -o out 
+#
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
+WORKDIR /app 
+#
+COPY --from=build /app/VogCodeChallenge.API/out ./
+ENTRYPOINT ["dotnet", "VogCodeChallenge.API.dll"]
 
