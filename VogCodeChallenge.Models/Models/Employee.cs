@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using VogCodeChallenge.Entities.Enums;
 
 namespace VogCodeChallenge.Entities.Models
@@ -16,6 +17,8 @@ namespace VogCodeChallenge.Entities.Models
 
         [ForeignKey("Department")]
         public int DepartmentId { get; set; }
+
+        [JsonIgnore]
         public virtual Department Department { get; set; }
     }
 }

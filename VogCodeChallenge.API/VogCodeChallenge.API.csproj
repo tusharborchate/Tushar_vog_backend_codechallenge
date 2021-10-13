@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\VogCodeChallenge.Business\VogCodeChallenge.Business.csproj" />
+    <ProjectReference Include="..\VogCodeChallenge.Models\VogCodeChallenge.Entities.csproj" />
   </ItemGroup>
 
 

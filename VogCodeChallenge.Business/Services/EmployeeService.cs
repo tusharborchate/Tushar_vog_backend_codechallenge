@@ -43,7 +43,8 @@ namespace VogCodeChallenge.Business.Services
                 LastName = "Borchate",
                 MailingAddress = "North York",
                 JobTitle = Entities.Enums.JobTitle.SoftwareDeveloper,
-                Id = 1
+                Id = 1,
+                DepartmentId = 1
             };
             employees.Add(employee);
             employee = new Employee
@@ -52,7 +53,8 @@ namespace VogCodeChallenge.Business.Services
                 LastName = "Elliot",
                 MailingAddress = "North York",
                 JobTitle = Entities.Enums.JobTitle.Manager,
-                Id = 2
+                Id = 2,
+                DepartmentId=2
             };
             employees.Add(employee);
             return employees;
