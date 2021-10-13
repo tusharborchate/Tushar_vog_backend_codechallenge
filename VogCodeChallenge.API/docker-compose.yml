@@ -1,0 +1,13 @@
+version: "3"
+services:
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    expose:
+      - "5002"
+    ports:
+      - "5002:5002"
+    restart: always
+   
