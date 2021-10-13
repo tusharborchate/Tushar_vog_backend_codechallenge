@@ -35,7 +35,11 @@ namespace VogCodeChallenge.API
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            else
+            {
+                app.UseExceptionHandler("/Error");
+                app.UseHsts();
+            }
             app.UseHttpsRedirection();
 
             app.UseRouting();
