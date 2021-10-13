@@ -4,7 +4,7 @@ using VogCodeChallenge.Entities.Enums;
 
 namespace VogCodeChallenge.Entities.Models
 {
-    public class Employees
+    public class Employee
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VogCodeChallenge.API", "Vog
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VogCodeChallenge.Entities", "VogCodeChallenge.Models\VogCodeChallenge.Entities.csproj", "{BD7295E1-A293-40D7-8334-DAE9EA2A56BC}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VogCodeChallenge.Business", "VogCodeChallenge.Business\VogCodeChallenge.Business.csproj", "{73C75D01-782A-4472-BC61-A7CB7F8E524E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{BD7295E1-A293-40D7-8334-DAE9EA2A56BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD7295E1-A293-40D7-8334-DAE9EA2A56BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD7295E1-A293-40D7-8334-DAE9EA2A56BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73C75D01-782A-4472-BC61-A7CB7F8E524E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73C75D01-782A-4472-BC61-A7CB7F8E524E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73C75D01-782A-4472-BC61-A7CB7F8E524E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73C75D01-782A-4472-BC61-A7CB7F8E524E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
