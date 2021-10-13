@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using VogCodeChallenge.Business.Interfaces;
 using VogCodeChallenge.Business.Services;
+using VogCodeChallenge.Data.Interfaces;
 
 namespace VogCodeChallenge.API
 {
@@ -22,6 +23,8 @@ namespace VogCodeChallenge.API
         {
             services.AddControllers();
             services.AddScoped<IEmployee, EmployeeService>();
+            services.AddScoped<IRepository, EmployeeRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

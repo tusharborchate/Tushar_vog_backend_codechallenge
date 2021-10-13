@@ -1,18 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using VogCodeChallenge.Business.Interfaces;
+using VogCodeChallenge.Data.Interfaces;
 using VogCodeChallenge.Entities.Models;
 
 namespace VogCodeChallenge.Business.Services
 {
     public class EmployeeService : IEmployee
     {
+        private IRepository _repository;
+       public EmployeeService(IRepository repository)
+        {
+            _repository = repository;
+        }
+            
 
         public IEnumerable<Employee> GetAll()
         {
             try
             {
-               return CreateEmployeesData();
+               return _repository.GetAll();
             }
             catch (Exception ex)
             {
@@ -25,7 +32,7 @@ namespace VogCodeChallenge.Business.Services
         {
             try
             {
-                return CreateEmployeesData();
+                return _repository.ListAll();
             }
             catch (Exception ex)
             {
