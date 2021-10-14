@@ -2,7 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <StartupObject>VogCodeChallenge.ConsoleApp.Program</StartupObject>
+    <StartupObject></StartupObject>
+    <OutputType>Library</OutputType>
   </PropertyGroup>
 
 
